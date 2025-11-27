@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whole Body Health Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Whole Body Health Analyzer</h1>
+
+        <!-- Patient Form -->
+        <div class="form-card">
+            <h2>Enter Patient Details</h2>
+            <form id="patientForm">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" id="age" required>
+                </div>
+                <div class="form-group">
+                    <label>Heart Rate (bpm):</label>
+                    <input type="number" id="heartRate" required>
+                </div>
+                <div class="form-group">
+                    <label>SPO2 (%):</label>
+                    <input type="number" id="spo2" required>
+                </div>
+                <div class="form-group">
+                    <label>Blood Pressure:</label>
+                    <input type="text" id="bp" required>
+                </div>
+                <div class="form-group">
+                    <label>Temperature (°C):</label>
+                    <input type="number" id="temp" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>Sugar Level (mg/dL):</label>
+                    <input type="number" id="sugar" required>
+                </div>
+                <div class="form-group">
+                    <label>Respiratory Rate (bpm):</label>
+                    <input type="number" id="resp" required>
+                </div>
+                <button type="submit">Analyze Health</button>
+            </form>
+        </div>
+
+        <!-- Patient Report -->
+        <div id="report-card" class="report-card">
+            <h2>Patient Health Report</h2>
+            <div id="report-content">
+                <p>Enter patient details and click "Analyze Health" to generate the report.</p>
+            </div>
+            <canvas id="vitalsChart" width="400" height="200"></canvas>
+            <button id="downloadPdf">Download PDF</button>
+        </div>
+
+        <!-- Patient History -->
+        <div id="history-card" class="report-card">
+            <h2>Patient History</h2>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
