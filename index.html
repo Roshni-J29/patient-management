@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whole Body Health Analyzer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Patient Report System</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🩺 Whole Body Health Analyzer</h1>
-
-        <!-- Patient Form -->
-        <div class="form-card">
-            <h2>Enter Patient Details</h2>
-            <form id="patientForm">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Age:</label>
-                    <input type="number" id="age" required>
-                </div>
-                <div class="form-group">
-                    <label>Heart Rate (bpm):</label>
-                    <input type="number" id="heartRate" required>
-                </div>
-                <div class="form-group">
-                    <label>SPO2 (%):</label>
-                    <input type="number" id="spo2" required>
-                </div>
-                <div class="form-group">
-                    <label>Blood Pressure:</label>
-                    <input type="text" id="bp" required>
-                </div>
-                <div class="form-group">
-                    <label>Temperature (°C):</label>
-                    <input type="number" id="temp" step="0.1" required>
-                </div>
-                <div class="form-group">
-                    <label>Sugar Level (mg/dL):</label>
-                    <input type="number" id="sugar" required>
-                </div>
-                <div class="form-group">
-                    <label>Respiratory Rate (bpm):</label>
-                    <input type="number" id="resp" required>
-                </div>
-                <button type="submit">Analyze Health</button>
-            </form>
+<div class="container">
+    <h1>🩺 Digital Patient Report System</h1>
+    <form id="patientForm">
+        <div class="input-group">
+            <label>Patient Name</label>
+            <input type="text" id="name" required>
         </div>
-
-        <!-- Patient Report -->
-        <div id="report-card" class="report-card">
-            <h2>Patient Health Report</h2>
-            <div id="report-content">
-                <p>Enter patient details and click "Analyze Health" to generate the report.</p>
-            </div>
-            <canvas id="vitalsChart" width="400" height="200"></canvas>
-            <button id="downloadPdf">Download PDF</button>
+        <div class="input-group">
+            <label>Age</label>
+            <input type="number" id="age" required>
         </div>
-
-        <!-- Patient History -->
-        <div id="history-card" class="report-card">
-            <h2>Patient History</h2>
-            <ul id="historyList"></ul>
+        <div class="input-group">
+            <label>Heart Rate (bpm)</label>
+            <input type="number" id="hr" required>
         </div>
+        <div class="input-group">
+            <label>SpO2 Level (%)</label>
+            <input type="number" id="spo2" required>
+        </div>
+        <div class="input-group">
+            <label>Blood Pressure (mmHg)</label>
+            <input type="text" id="bp" placeholder="120/80" required>
+        </div>
+        <div class="input-group">
+            <label>Temperature (°F)</label>
+            <input type="number" id="temp" required>
+        </div>
+        <div class="input-group">
+            <label>Sugar Level (mg/dL)</label>
+            <input type="number" id="sugar" required>
+        </div>
+        <div class="input-group">
+            <label>Respiratory Rate (/min)</label>
+            <input type="number" id="rr" required>
+        </div>
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <div id="reportSection" class="hidden">
+        <h2>Patient Report</h2>
+        <p id="patientInfo"></p>
+        <table id="vitalTable">
+            <thead>
+                <tr>
+                    <th>Vital Sign</th>
+                    <th>Value</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows -->
+            </tbody>
+        </table>
+        <canvas id="vitalChart" width="400" height="300"></canvas>
+        <button id="downloadPDF">Download PDF</button>
     </div>
 
-    <script src="script.js"></script>
+    <div id="historySection">
+        <h2>Patient History</h2>
+        <ul id="historyList">
+            <!-- Stored patients -->
+        </ul>
+    </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
